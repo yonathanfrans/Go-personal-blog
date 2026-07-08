@@ -1,13 +1,30 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Blog</title>
-</head>
-<body>
-    <h1>My Personal Blog</h1>
-    <h2>Welcome to My Blog!</h2>
-    <p>This website is built with Go.</p>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{.Title}}</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="title">
+        <h1>My Personal Blog</h1>
+        <h2>Welcome to My Blog!</h2>
+      </div>
+    </header>
+
+    <main>
+      {{if not .Articles}}
+      <p class="noneArticle">No articles have been Published yet.</p>
+      {{else}} {{range .Articles}}
+      <div class="article">
+        <hr />
+        <h2>{{.Title}}</h2>
+        <p>Published: {{.PublishedAt.Format "2006-01-02"}}</p>
+        <a href="/article?id={{.ID}}">Read More</a>
+      </div>
+      {{end}} {{end}}
+    </main>
+  </body>
 </html>

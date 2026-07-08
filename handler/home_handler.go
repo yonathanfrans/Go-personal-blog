@@ -1,9 +1,18 @@
 package handler
 
 import (
-	"net/http"
+	"example/personal-blog/model"
+	"example/personal-blog/storage"
 	"html/template"
+	"net/http"
 )
+
+var homeTemplate = template.Must(template.ParseFiles("templates/home.html"))
+
+type HomePageData struct {
+	Title string
+	Articles []model.Article
+}
 
 func HomeHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodGet {
@@ -11,13 +20,18 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	tmpl, err := template.ParseFiles("templates/home.html")
+	articles, err := storage.LoadArticles()
 	if err != nil {
-		http.Error(w, "Template tidak ditemukan: "+err.Error(), http.StatusInternalServerError)
+		http.Error(w, "Gagal memuat artikel: "+err.Error(), http.StatusInternalServerError)
 		return
 	}
+
+	data := HomePageData{
+		Title: "My Personal Blog",
+		Articles: articles,
+	}
 	
-	err = tmpl.Execute(w, nil)
+	err = homeTemplate.Execute(w, data)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return

@@ -8,6 +8,9 @@ import (
 
 func main() {
 	http.HandleFunc("/", handler.HomeHandler)
+	http.HandleFunc("/article", handler.ArticleHandler)
+	
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
 	fmt.Println("Server running on http://localhost:8080")
 

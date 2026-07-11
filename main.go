@@ -9,6 +9,8 @@ import (
 func main() {
 	http.HandleFunc("/", handler.HomeHandler)
 	http.HandleFunc("/article", handler.ArticleHandler)
+	http.HandleFunc("/admin", handler.DashboardHandler)
+	http.HandleFunc("/admin/add", handler.AddArticleHandler)
 	
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 

@@ -2,7 +2,7 @@
   --main-color: #2d3250;
   --text-color: #f6b17a;
   --second-color: #424769;
-  --third-color: #7077A1;
+  --third-color: #7077a1;
 }
 
 * {
@@ -23,80 +23,180 @@ header {
   flex-direction: column;
   text-align: center;
   background-color: var(--main-color);
-  padding: 20px 10px;
+  padding: 1.4rem 1rem;
   width: 80%;
-  margin: 30px auto;
-  border-radius: 50px;
+  margin: 2.2rem auto;
+  border-radius: 3rem;
 }
 
 header .title {
-    line-height: 1.6;
-    color: var(--text-color);
+  line-height: 1.6;
+  color: var(--text-color);
 }
 
 header .title h2 {
-    color: white;
+  color: white;
 }
 
 main {
-    /* border: 2px solid red; */
-    margin: 50px auto;
-    padding: 10px 50px;
+  margin: 3rem auto;
+  padding: 1rem 3rem;
 }
 
 main .noneArticle {
-    text-align: center;
-    color: var(--third-color);
-    font-weight: bold;
+  text-align: center;
+  color: var(--third-color);
+  font-weight: bold;
 }
 
-main a {
-    margin-left: 20px;
-    color: var(--third-color);
-    font-weight: bold;
-    text-decoration: underline;
+main .sub-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 2rem;
 }
 
-main a:hover {
-    color: var(--text-color);
+main .sub-title p {
+  color: var(--second-color);
+  font-weight: bolder;
+  font-size: large;
+}
+
+main .sub-title a {
+  color: var(--third-color);
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+main .sub-title a:hover {
+  color: var(--text-color);
 }
 
 main .article {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .article hr {
-    margin: 20px 10px;
-    border: 1px solid var(--third-color);
+  margin: 1.2rem 1rem;
+  border: 1px solid var(--third-color);
 }
 
-.article h2 {
-    margin: 2px 20px;
-    padding-bottom: 20px;
-    color: var(--text-color);
+.article .article-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 2rem;
 }
 
-.article p {
-    margin: 2px 20px;
-    padding-bottom: 20px;
-    color: var(--third-color);
+.article-content .article-title {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 1.5rem;
+  gap: 1.4rem;
 }
 
-.article a {
-    margin: 2px 20px;
-    padding-bottom: 20px;
-    color: var(--second-color);
-    font-weight: bold;
+.article-content .article-title h2 {
+  color: var(--text-color);
 }
 
-.article a:hover {
-    color: var(--text-color);
+.article-content .article-title p {
+  color: var(--third-color);
 }
 
-.article article {
-    margin: 2px 20px;
-    padding-bottom: 20px;
-    color: var(--main-color);
+.article-content .btn-action {
+  display: flex;
+  gap: 2rem;
+}
+
+.article-content .btn-action a {
+  color: var(--main-color);
+  font-weight: bold;
+}
+
+.article-content .btn-action a:hover {
+  color: var(--text-color);
+}
+
+.article-content article {
+  color: var(--main-color);
+}
+
+main .form-add {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  padding: 2rem;
+}
+
+.form-add form {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid none;
+  border-radius: 2rem;
+  background-color: var(--main-color);
+  padding: 2rem;
+  gap: 2rem;
+}
+
+form .input-title {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  gap: 3rem;
+}
+
+form .input-title label {
+  color: var(--text-color);
+  font-size: larger;
+}
+
+form .input-title input {
+  padding: 0.5rem 3rem 0.5rem 1rem;
+  font-size: medium;
+  border: none;
+  border-radius: 0.5rem;
+  color: var(--third-color);
+}
+
+form .input-content {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: start;
+  gap: 1rem;
+}
+
+form .input-content label {
+  color: var(--text-color);
+  font-size: larger;
+}
+
+form .input-content textarea {
+  padding: 1rem;
+  font-size: medium;
+  color: var(--third-color);
+  border-radius: 0.5rem;
+  resize: none;
+}
+
+form button {
+  margin: auto;
+  padding: 0.5rem 1.2rem;
+  border: 2px solid white;
+  border-radius: 2rem;
+  color: white;
+  background-color: var(--third-color);
+}
+
+form button:hover {
+  color: var(--text-color);
+  background-color: var(--main-color);
+  border-color: var(--third-color);
 }

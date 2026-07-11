@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{.Title}}</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="title">
+        <h1>{{.Header}}</h1>
+        <h2>{{.SubHeader}}</h2>
+      </div>
+    </header>
+
+    <main>
+      <div class="sub-title">
+        <a href="/admin/add">+ Add Article</a>
+        <a href="/">Back to Home</a>
+      </div>
+      {{if not .Articles}}
+      <p class="noneArticle">No articles have been Published yet.</p>
+      {{else}} {{range .Articles}}
+      <div class="article">
+        <hr />
+        <div class="article-content">
+            <div class="article-title">
+                <h2>{{.Title}}</h2>
+                <p>Published: {{.PublishedAt.Format "2006-01-02"}}</p>
+            </div>
+            <div class="btn-action">
+                <a href="#">Edit</a>
+                <a href="#">Delete</a>
+            </div>
+        </div>
+      </div>
+      {{end}} {{end}}
+    </main>
+  </body>
+</html>

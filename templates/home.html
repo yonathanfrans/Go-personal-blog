@@ -9,8 +9,8 @@
   <body>
     <header>
       <div class="title">
-        <h1>My Personal Blog</h1>
-        <h2>Welcome to My Blog!</h2>
+        <h1>{{.Header}}</h1>
+        <h2>{{.SubHeader}}</h2>
       </div>
     </header>
 
@@ -20,9 +20,15 @@
       {{else}} {{range .Articles}}
       <div class="article">
         <hr />
-        <h2>{{.Title}}</h2>
-        <p>Published: {{.PublishedAt.Format "2006-01-02"}}</p>
-        <a href="/article?id={{.ID}}">Read More</a>
+        <div class="article-content">
+          <div class="article-title">
+            <h2>{{.Title}}</h2>
+            <p>Published: {{.PublishedAt.Format "2006-01-02"}}</p>
+          </div>
+          <div class="btn-action">
+            <a href="/article?id={{.ID}}">Read More</a>
+          </div>
+        </div>
       </div>
       {{end}} {{end}}
     </main>

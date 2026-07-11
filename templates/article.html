@@ -1,29 +1,38 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{.Title}}</title>
-    <link rel="stylesheet" href="/static/style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{.Article.Title}}</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
     <header>
-        <div class="title">
-            <h1>My Personal Blog</h1>
-            <h2>Welcome to My Blog!</h2>
-        </div>
+      <div class="title">
+        <h1>{{.Header}}</h1>
+        <h2>{{.SubHeader}}</h2>
+      </div>
     </header>
 
     <main>
+      <div class="sub-title">
         <a href="/">Back to Home</a>
-        <div class="article">
-            <hr>
-            <h2>{{.Title}}</h2>
-            <p>Published: {{.PublishedAt.Format "2006-01-02"}} </p>
+      </div>
+      <div class="article">
+        <hr />
+        <div class="article-content">
+          <div class="article-title">
+            <h2>{{.Article.Title}}</h2>
+            <p>Published: {{.Article.PublishedAt.Format "2006-01-02"}}</p>
             <article>
-                {{.Content}}
+                {{.Article.Content}}
             </article>
+          </div>
+          <div class="btn-action">
+            
+          </div>
         </div>
+      </div>
     </main>
-</body>
+  </body>
 </html>

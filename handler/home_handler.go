@@ -11,6 +11,8 @@ var homeTemplate = template.Must(template.ParseFiles("templates/home.html"))
 
 type HomePageData struct {
 	Title string
+	Header string
+	SubHeader string
 	Articles []model.Article
 }
 
@@ -28,6 +30,8 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 
 	data := HomePageData{
 		Title: "My Personal Blog",
+		Header: "My Personal Blog",
+		SubHeader: "Welcome to My Blog!",
 		Articles: articles,
 	}
 	

@@ -2,6 +2,7 @@ package handler
 
 import (
 	"errors"
+	"example/personal-blog/model"
 	"example/personal-blog/storage"
 	"html/template"
 	"net/http"
@@ -10,6 +11,12 @@ import (
 )
 
 var articleTemplate = template.Must(template.ParseFiles("templates/article.html"))
+
+type ArticlePageData struct {
+	Header string
+	SubHeader string
+	Article model.Article
+}
 
 func ArticleHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodGet {
@@ -45,7 +52,13 @@ func ArticleHandler(w http.ResponseWriter, r *http.Request) {
 	// 	return
 	// }
 
-	err = articleTemplate.Execute(w, article)
+	data := ArticlePageData {
+		Header: "My Personal Blog",
+		SubHeader: "Welcome to My Blog!",
+		Article: article,
+	}
+
+	err = articleTemplate.Execute(w, data)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return

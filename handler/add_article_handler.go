@@ -37,13 +37,13 @@ func AddArticleHandler(w http.ResponseWriter, r *http.Request) {
 		content := r.FormValue("content")
 
 		if strings.TrimSpace(title) == "" || strings.TrimSpace(content) == "" {
-			http.Error(w, "Title dan Content tidak boleh kosong", http.StatusBadRequest)
+			http.Error(w, "Title and content cannot be emptyg", http.StatusBadRequest)
 			return
 		}
 
 		articles, err := storage.LoadArticles()
 		if err != nil {
-			http.Error(w, "Gagal memuat artikel: "+err.Error(), http.StatusInternalServerError)
+			http.Error(w, "Failed to Load Articles: "+err.Error(), http.StatusInternalServerError)
 			return
 		}
 
@@ -64,7 +64,7 @@ func AddArticleHandler(w http.ResponseWriter, r *http.Request) {
 
 		err = storage.SaveArticle(newArticle)
 		if err != nil {
-			http.Error(w, "Gagal menyimpan artikel baru: "+err.Error(), http.StatusInternalServerError)
+			http.Error(w, "Failed to Save a New Article: "+err.Error(), http.StatusInternalServerError)
 			return
 		}
 

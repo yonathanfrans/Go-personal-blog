@@ -24,7 +24,7 @@ func DashboardHandler(w http.ResponseWriter, r *http.Request) {
 
 	articles, err := storage.LoadArticles()
 	if err != nil {
-		http.Error(w, "Gagal memuat artikel: "+err.Error(), http.StatusInternalServerError)
+		http.Error(w, "Failed to Load Articles: "+err.Error(), http.StatusInternalServerError)
 		return
 	}
 

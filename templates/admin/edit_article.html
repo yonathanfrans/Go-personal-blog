@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.Title}}</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+      <div class="title">
+        <h1>{{.Header}}</h1>
+        <h2>{{.SubHeader}}</h2>
+      </div>
+    </header>
+
+    <main>
+      <div class="sub-title">
+        <a href="/admin">Back to Dashboard</a>
+      </div>
+
+      <div class="form-article">
+          <form action="/admin/edit?id={{.Article.ID}}" method="post">
+            <div class="input-title">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" placeholder="Enter the article" value="{{.Article.Title}}" required>
+            </div>
+            <div class="input-content">
+                <label for="content">Content:</label>
+                <textarea rows="10" cols="50" id="content" name="content" placeholder="Write the article here..." required>{{.Article.Content}}</textarea>
+            </div>
+    
+            <button type="submit">Update Article</button>
+          </form>
+      </div>
+    </main>
+</body>
+</html>

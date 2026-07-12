@@ -125,7 +125,7 @@ main .article {
   color: var(--main-color);
 }
 
-main .form-add {
+main .form-article {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -134,7 +134,7 @@ main .form-add {
   padding: 2rem;
 }
 
-.form-add form {
+.form-article form {
   display: flex;
   flex-direction: column;
   border: 2px solid none;
@@ -158,7 +158,8 @@ form .input-title label {
 }
 
 form .input-title input {
-  padding: 0.5rem 3rem 0.5rem 1rem;
+  padding: 0.5rem 1rem;
+  width: 60%;
   font-size: medium;
   border: none;
   border-radius: 0.5rem;

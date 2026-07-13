@@ -12,6 +12,7 @@ func main() {
 	http.HandleFunc("/admin", handler.DashboardHandler)
 	http.HandleFunc("/admin/add", handler.AddArticleHandler)
 	http.HandleFunc("/admin/edit", handler.EditArticleHandler)
+	http.HandleFunc("/admin/delete", handler.DeleteArticleHandler)
 	
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 

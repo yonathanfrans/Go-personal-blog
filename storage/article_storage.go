@@ -82,11 +82,22 @@ func LoadArticles() ([]model.Article, error) {
 
 		article, err := LoadArticle(id)
 		if err != nil {
-			log.Printf("Warning: Gagal membaca artikel ID %d: %v", id, err)
+			log.Printf("Warning: Failed to read ID article %d: %v", id, err)
 			continue
 		}
 
 		articles = append(articles, article)
 	}
 	return articles, nil
+}
+
+func DeleteArticle(id int) error {
+	filePath := getArticleFilePath(id)
+
+	err := os.Remove(filePath)
+	if err != nil {
+		return err
+	}
+
+	return nil
 }

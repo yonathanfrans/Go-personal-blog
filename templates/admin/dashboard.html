@@ -29,10 +29,10 @@
                 <h2>{{.Title}}</h2>
                 <p>Published: {{.PublishedAt.Format "2006-01-02"}}</p>
             </div>
-            <div class="btn-action">
+            <form method="post" action="/admin/delete?id={{.ID}}" class="btn-action">
                 <a href="/admin/edit?id={{.ID}}">Edit</a>
-                <a href="#">Delete</a>
-            </div>
+                <button type="submit">Delete</button>
+            </form>
         </div>
       </div>
       {{end}} {{end}}

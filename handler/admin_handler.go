@@ -10,9 +10,7 @@ import (
 var dashboardTemplate = template.Must(template.ParseFiles("templates/admin/dashboard.html"))
 
 type DashboardPageData struct {
-	Title string
-	Header string
-	SubHeader string
+	BasePageData
 	Articles []model.Article
 }
 
@@ -29,9 +27,11 @@ func DashboardHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	data := DashboardPageData{
-		Title: "Dashboard Page",
-		Header: "My Dashboard Page",
-		SubHeader: "Welcome Admin!",
+		BasePageData: BasePageData{
+			Title: "Dashboard Page",
+			Header: "My Dashboard Page",
+			SubHeader: "Welcome Admin!",
+		},
 		Articles: articles,
 	}
 

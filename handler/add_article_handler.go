@@ -12,18 +12,18 @@ import (
 var addArticleTemplate = template.Must(template.ParseFiles("templates/admin/add_article.html"))
 
 type AddArticlePageData struct {
-	Title string 
-	Header string
-	SubHeader string
+	BasePageData
 }
 
 func AddArticleHandler(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case http.MethodGet:
 		data := AddArticlePageData {
-			Title: "Add a New Article - Admin",
-			Header: "My Dashboard Page",
-			SubHeader: "Add a New Article Here!",
+			BasePageData: BasePageData{
+				Title: "Add a New Article - Admin",
+				Header: "My Dashboard Page",
+				SubHeader: "Add a New Article Here!",
+			},
 		}
 
 		err := addArticleTemplate.Execute(w, data)

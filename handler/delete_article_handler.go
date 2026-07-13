@@ -5,7 +5,6 @@ import (
 	"example/personal-blog/storage"
 	"net/http"
 	"os"
-	"strconv"
 )
 
 func DeleteArticleHandler(w http.ResponseWriter, r *http.Request) {
@@ -14,19 +13,17 @@ func DeleteArticleHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	idStr := r.URL.Query().Get("id")
-	if idStr == "" {
-		http.Error(w, "Missing 'id' parameter", http.StatusBadRequest)
-		return
-	}
-
-	id, err := strconv.Atoi(idStr)
+	article, err := getArticleFromRequest(r)
 	if err != nil {
-		http.Error(w, "Invalid 'id' parameter, must be a number", http.StatusBadRequest)
+		if errors.Is(err, os.ErrNotExist) {
+			http.Error(w, "Article Not Found", http.StatusNotFound)
+		} else {
+			http.Error(w, "Internal Server Error: "+err.Error(), http.StatusInternalServerError)
+		}
 		return
 	}
 
-	err = storage.DeleteArticle(id)
+	err = storage.DeleteArticle(article.ID)
 	if err != nil {
 		if errors.Is(err, os.ErrNotExist) {
 			http.Error(w, "Article Not Found", http.StatusNotFound)

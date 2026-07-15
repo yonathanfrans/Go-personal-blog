@@ -17,7 +17,10 @@
     <main>
       <div class="sub-title">
         <a href="/admin/add">+ Add Article</a>
-        <a href="/">Back to Home</a>
+        <div>
+          <a href="/">Back to Home</a>
+          <a href="/logout">Logout</a>
+        </div>
       </div>
       {{if not .Articles}}
       <p class="noneArticle">No articles have been Published yet.</p>
@@ -25,14 +28,18 @@
       <div class="article">
         <hr />
         <div class="article-content">
-            <div class="article-title">
-                <h2>{{.Title}}</h2>
-                <p>Published: {{.PublishedAt.Format "2006-01-02"}}</p>
-            </div>
-            <form method="post" action="/admin/delete?id={{.ID}}" class="btn-action">
-                <a href="/admin/edit?id={{.ID}}">Edit</a>
-                <button type="submit">Delete</button>
-            </form>
+          <div class="article-title">
+            <h2>{{.Title}}</h2>
+            <p>Published: {{.PublishedAt.Format "2006-01-02"}}</p>
+          </div>
+          <form
+            method="post"
+            action="/admin/delete?id={{.ID}}"
+            class="btn-action"
+          >
+            <a href="/admin/edit?id={{.ID}}">Edit</a>
+            <button type="submit">Delete</button>
+          </form>
         </div>
       </div>
       {{end}} {{end}}

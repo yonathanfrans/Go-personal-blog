@@ -73,6 +73,12 @@ main .sub-title a:hover {
   color: var(--text-color);
 }
 
+main .sub-title div {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
 main .article {
   display: flex;
   flex-direction: column;
@@ -211,6 +217,88 @@ main .form-article {
 }
 
 .form-article form button:hover {
+  color: var(--text-color);
+  background-color: var(--main-color);
+  border-color: var(--third-color);
+}
+
+main .form-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  padding: 2rem;
+}
+
+.form-login form {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid none;
+  border-radius: 2rem;
+  background-color: var(--main-color);
+  padding: 2rem;
+  gap: 2rem;
+}
+
+.form-login form h2 {
+  color: var(--text-color);
+  text-align: center;
+  margin: 0.5rem 0;
+}
+
+.form-login form .input-username {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.form-login form .input-username label {
+  color: var(--text-color);
+  font-size: large;
+}
+
+.form-login form .input-username input {
+  padding: 0.5rem 1rem;
+  font-size: medium;
+  border: none;
+  border-radius: 0.5rem;
+  color: var(--third-color);
+}
+
+.form-login form .input-password {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.form-login form .input-password label {
+  color: var(--text-color);
+  font-size: large;
+}
+
+.form-login form .input-password input {
+  padding: 0.5rem 1rem;
+  font-size: medium;
+  color: var(--third-color);
+  border-radius: 0.5rem;
+  resize: none;
+}
+
+.form-login button {
+  margin: auto;
+  padding: 0.5rem 1.2rem;
+  border: 2px solid white;
+  border-radius: 2rem;
+  color: white;
+  background-color: var(--third-color);
+}
+
+.form-login button:hover {
   color: var(--text-color);
   background-color: var(--main-color);
   border-color: var(--third-color);

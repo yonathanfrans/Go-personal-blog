@@ -18,6 +18,11 @@ type EditArticlePageData struct {
 }
 
 func EditArticleHandler(w http.ResponseWriter, r *http.Request) {
+	if !IsAuthenticated(r) {
+		http.Redirect(w, r, "/login", http.StatusSeeOther)
+		return
+	}
+
 	article, err := getArticleFromRequest(r)
 	if err != nil {
 		if errors.Is(err, os.ErrNotExist) {

@@ -16,6 +16,11 @@ type AddArticlePageData struct {
 }
 
 func AddArticleHandler(w http.ResponseWriter, r *http.Request) {
+	if !IsAuthenticated(r) {
+		http.Redirect(w, r, "/login", http.StatusSeeOther)
+		return
+	}
+	
 	switch r.Method {
 	case http.MethodGet:
 		data := AddArticlePageData {
